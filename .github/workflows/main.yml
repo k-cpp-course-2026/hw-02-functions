@@ -20,7 +20,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Build
-        run: clang++ src/${{ matrix.task }}/solution.cpp tests/${{ matrix.task }}/tests.cpp -o test.out
+        run: clang++ -I./src/${{ matrix.task }} src/${{ matrix.task }}/solution.cpp tests/${{ matrix.task }}/tests.cpp -o test.out
       - name: Run public tests
         env:
             SAVE_SCORE_DB: ~/score.db
